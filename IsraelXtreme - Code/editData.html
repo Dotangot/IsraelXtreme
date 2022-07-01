@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IsaelXtreme Edit Page</title>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+  <script src="form.js"></script>
+</head>
+<body>
+<div class="bgim"></div>
+<div class="editpage" position="absolute">
+    <link rel="stylesheet" href="editpage.css">
+    <br>  
+    <h1>Edit Extreme Site</h1>
+    <label for="trackTypee">Choose a Extreme site:</label>
+        <div class="custom-select" style="width:600px;">
+          <select name="trackType" id="trackType" multiple>
+              <option value="Traktoron Meofef">Traktoron Meofef</option>
+              <option value="SkyDive Hof Habonim">Sky Dive Hof Habonim</option>
+              <option value="Aco Extreme">Aco Extreme</option>
+              <option value="Lucky Divers Eilat">Lucky Divers Eilat</option>
+              <option value="Holon">Climb Wall Holon</option>
+              <option value="BeerSheva">Skate Park Beer Sheva</option>
+          </select>
+        </div>
+        <br>
+        <label for="Details">Details:</label>
+        <input type="text" name="u" placeholder="Price" required="required" id="price"/>
+        <input type="text" name="u" placeholder="City" required="required" id="city"/>
+        <input type="text" name="u" placeholder="Telephone" required="required" id="telephone"/>
+        <input type="text" name="u" placeholder="Opening Hours" required="required" id="hours"/>
+        <br><br>
+        <button onclick="editData()" type="submit" id="editData" class="btn btn-primary btn-block btn-large">Edit</button>
+        <br><br>
+        <button onclick="moveToMap()" type="submit" id="signUp" class="btn btn-primary btn-block btn-large">Map</button>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IsraelXtreme - Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
+
+<body>
+<div id="map">
+<script>
+    
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGFtYXppMTQ1MSIsImEiOiJja3N1NDQydmswZnEwMndzMnlvY3U0NnNwIn0.uIvF4ZndsllN1CpquYPJng';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/dark-v10', // style URL
+        center: [35.166361, 31.256611], // starting position [lng, lat]
+        zoom: 6.3 // starting zoom
+    });
+        
+    map.on('mouseleave', 'places', () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+    var firebaseConfig = {
+        apiKey: "AIzaSyDtdZJh7f9FlgjLZpDGHpAUiZD_qjD15os",
+        authDomain: "israelxtrem-86ab7.firebaseapp.com",
+        projectId: "israelxtrem-86ab7",
+        storageBucket: "israelxtrem-86ab7.appspot.com",
+        messagingSenderId: "490542924965",
+        appId: "1:490542924965:web:56e679532c6fbe66a8794c",
+        measurementId: "G-G5WV7X5RF9"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+var dbTMeofef = firebase.database().ref().child('Traktoron Meofef');
+var dbHofHabonim = firebase.database().ref().child('SkyDive Hof Habonim');
+var dbAcoExtreme = firebase.database().ref().child('Aco Extreme');
+var dbLuckyDivers = firebase.database().ref().child('Lucky Divers Eilat');
+var dbHolon = firebase.database().ref().child('Holon');
+var dbBeerSheva = firebase.database().ref().child('BeerSheva');
+var button = firebase.database().ref().child('BeerSheva');
+
+dbTMeofef.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+    
+    const marker1 = new mapboxgl.Marker()
+        .setLngLat([34.93226739160289, 32.26282408551865])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="einvered.jpeg"/>')) // add popup
+        .addTo(map);
+});
+
+dbHofHabonim.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+    const marker2 = new mapboxgl.Marker()
+        .setLngLat([34.932788722079735, 32.64774339666561])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="skydive.jpeg"/>')) // add popup
+        .addTo(map);
+    });
+
+dbAcoExtreme.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+
+    const marker3 = new mapboxgl.Marker()
+        .setLngLat([35.084117718641295, 32.93305816768342])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="aco.jpeg"/>')) // add popup
+        .addTo(map);
+    });
+
+dbLuckyDivers.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+
+    const marker4 = new mapboxgl.Marker()
+        .setLngLat([34.951923, 29.557669])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="lucky.jpeg"/>')) // add popup
+        .addTo(map);
+    });
+        
+dbHolon.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+
+    const marker5 = new mapboxgl.Marker()
+        .setLngLat([34.79937676923861, 32.004662473643855])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="holon.jpeg"/>')) // add popup
+        .addTo(map);
+    });
+
+dbBeerSheva.on('value', function(snap){
+    var name = snap.child('Name').val();
+    var price = snap.child('Price').val();
+    var city = snap.child('City').val();
+    var telephone = snap.child('Telephone').val();
+    var hours = snap.child('Hours').val();
+
+const arr = ["Name: "+name,"Price: "+price,"City: "+city,"Telephone: "+telephone,"Opening Hours: "+hours];
+
+    const marker6 = new mapboxgl.Marker()
+        .setLngLat([34.75841306729026, 31.25747255875045])
+        .setPopup(new mapboxgl.Popup().setHTML(arr[0]+"<br>"+arr[1]+"<br>"+arr[2]+"<br>"+arr[3]+"<br>"+arr[4]+"<br>"+'<img width="150" height="150" src="beersheva.jpeg"/>')) // add popup
+        .addTo(map);
+    });
+
+// button.on('value', function(snap){
+//     const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
+//         .setLngLat([34.95241306729026, 31.25747255875045])
+//         .setHTML("<h1>Hello World!</h1>")
+//         .setMaxWidth("300px")
+//         .addTo(map);
+//     });
+
+
+
+</script>
+</div>
+
+</body>
+</html>

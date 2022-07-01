@@ -1,0 +1,16 @@
+{
+  "name": "gis-project",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "map.js",
+  "dependencies": {
+    "firebase": "^9.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
